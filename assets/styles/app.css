@@ -131,6 +131,28 @@ ul {
     align-items: center;
 }
 
+.club-list-item {
+    display: flex;
+}
+
+.club-list-item__content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.club-list-item__actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.club-badge {
+    width: 2rem;
+    height: 2rem;
+}
+
 .icon {
     display: block;
     width: 2.5rem;
@@ -190,6 +212,17 @@ ul {
     font-size: 1.2rem;
     border-radius: var(--border-radius);
     border: none;
+}
+
+.select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+.file-input {
 }
 
 .form-group {

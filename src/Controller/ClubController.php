@@ -35,17 +35,19 @@ final class ClubController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $badgeFile = $form->get('badge')->getData();
+            if($badgeFile){
+                $originalFilename = pathinfo($badgeFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalFilename);
+                $newFilename = $safeFileName . '-' . uniqid() . '.' . $badgeFile->guessExtension();
 
-            $originalFilename = pathinfo($badgeFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $safeFileName = $slugger->slug($originalFilename);
-            $newFilename = $safeFileName . '-' . uniqid() . '.' . $badgeFile->guessExtension();
-
-            try {
-                $badgeFile->move($clubsDirectory, $newFilename);
-            } catch (FileException $e) {
-                //TODO: Handle exception
+                try {
+                    $badgeFile->move($clubsDirectory, $newFilename);
+                } catch (FileException $e) {
+                    //TODO: Handle exception
+                }
+                $club->setBadgeUrl($newFilename);
             }
-            $club->setBadgeUrl($newFilename);
+
 
             $entityManager->persist($club);
             $entityManager->flush();
@@ -76,17 +78,18 @@ final class ClubController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $badgeFile = $form->get('badge')->getData();
+            if($badgeFile){
+                $originalFilename = pathinfo($badgeFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalFilename);
+                $newFilename = $safeFileName . '-' . uniqid() . '.' . $badgeFile->guessExtension();
 
-            $originalFilename = pathinfo($badgeFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $safeFileName = $slugger->slug($originalFilename);
-            $newFilename = $safeFileName . '-' . uniqid() . '.' . $badgeFile->guessExtension();
-
-            try {
-                $badgeFile->move($clubsDirectory, $newFilename);
-            } catch (FileException $e) {
-                //TODO: Handle exception
+                try {
+                    $badgeFile->move($clubsDirectory, $newFilename);
+                } catch (FileException $e) {
+                    //TODO: Handle exception
+                }
+                $club->setBadgeUrl($newFilename);
             }
-            $club->setBadgeUrl($newFilename);
 
             $entityManager->flush();
 
