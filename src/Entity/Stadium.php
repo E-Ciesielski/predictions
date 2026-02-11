@@ -37,9 +37,16 @@ class Stadium
     #[ORM\OneToMany(targetEntity: Club::class, mappedBy: 'stadium')]
     private Collection $clubs;
 
+    /**
+     * @var Collection<int, Game>
+     */
+    #[ORM\OneToMany(targetEntity: Game::class, mappedBy: 'Stadium')]
+    private Collection $games;
+
     public function __construct()
     {
         $this->clubs = new ArrayCollection();
+        $this->games = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -107,6 +114,36 @@ class Stadium
             // set the owning side to null (unless already changed)
             if ($club->getStadium() === $this) {
                 $club->setStadium(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Game>
+     */
+    public function getGames(): Collection
+    {
+        return $this->games;
+    }
+
+    public function addGame(Game $game): static
+    {
+        if (!$this->games->contains($game)) {
+            $this->games->add($game);
+            $game->setStadium($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGame(Game $game): static
+    {
+        if ($this->games->removeElement($game)) {
+            // set the owning side to null (unless already changed)
+            if ($game->getStadium() === $this) {
+                $game->setStadium(null);
             }
         }
 

@@ -1,0 +1,56 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+<div class="form-group">
+    {{ form_label(form.gameWeek, 'Game week', {'label_attr': {'class': 'label'}}) }}
+    {{ form_widget(form.gameWeek, { 'attr': {'class': 'input'}}) }}
+    <div class="form-group__errors">
+        {{ form_errors(form.gameWeek) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.homeTeam, 'Home team', {'label_attr': {'class': 'label'}}) }}
+    {{ form_widget(form.homeTeam, { 'attr': {'class': 'select'}}) }}
+    <div class="form-group__errors">
+        {{ form_errors(form.homeTeam) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.awayTeam, 'Away Team', {'label_attr': {'class': 'label'}}) }}
+    {{ form_widget(form.awayTeam, { 'attr': {'class': 'select'}}) }}
+    <div class="form-group__errors">
+        {{ form_errors(form.awayTeam) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.stadium, 'Stadium', {'label_attr': {'class': 'label'}}) }}
+    {{ form_widget(form.stadium, { 'attr': {'class': 'input'}}) }}
+    <div class="form-group__errors">
+        {{ form_errors(form.stadium) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.startDateTime, 'Game start', {'label_attr': {'class': 'label'}}) }}
+    {{ form_widget(form.startDateTime, { 'attr': {'class': 'input'}}) }}
+    <div class="form-group__errors">
+        {{ form_errors(form.startDateTime) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.homeScore, 'Home score', {'label_attr': {'class': 'label'}}) }}
+    {{ form_widget(form.homeScore, { 'attr': {'class': 'input'}}) }}
+    <div class="form-group__errors">
+        {{ form_errors(form.homeScore) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.awayScore, 'Away score', {'label_attr': {'class': 'label'}}) }}
+    {{ form_widget(form.awayScore, { 'attr': {'class': 'input'}}) }}
+    <div class="form-group__errors">
+        {{ form_errors(form.awayScore) }}
+    </div>
+</div>
+{{ form_rest(form) }}
+<div class="form__actions">
+    <button class="btn btn--primary">{{ button_label|default('Save') }}</button>
+    <a class="btn btn--secondary" href="{{ path('app_game_index') }}">Cancel</a>
+</div>
+{{ form_end(form) }}
