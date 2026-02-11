@@ -72,6 +72,12 @@ final class StadiumController extends AbstractController
     public function delete(Request $request, Stadium $stadium, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$stadium->getId(), $request->getPayload()->getString('_token'))) {
+            if (!$stadium->getClubs()->isEmpty()) {
+                $this->addFlash('error', 'Cannot delete this stadium because it still has clubs.');
+
+                return $this->redirectToRoute('app_stadium_index');
+            }
+
             $entityManager->remove($stadium);
             $entityManager->flush();
         }

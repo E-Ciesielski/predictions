@@ -1,6 +1,6 @@
 :root {
     --c-primary: #13BFA2;
-    --c-danger: #CC0000;
+    --c-danger: #dc3545;
     --c-info: #00FFFF;
     --c-background: #3B3B4E;
     --c-background-secondary: #5e5e7d;
@@ -17,6 +17,7 @@ body {
     background-color: var(--c-background);
     color: var(--c-text);
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,6 +53,7 @@ h6 {
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .logo {
@@ -162,6 +164,7 @@ ul {
     text-align: center;
     font-size: 1.2rem;
     flex-grow: 1;
+    border: none;
 }
 
 .btn--primary {
@@ -170,3 +173,49 @@ ul {
     color: var(--c-background);
 }
 
+.btn--secondary {
+    background: var(--c-background-secondary);
+    font-weight: 600;
+    color: var(--c-text-heading);
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group__errors {
+    color: var(--c-danger);
+    margin-top: 0.5rem;
+}
+
+.form__actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.flash {
+    padding: 1rem;
+    border: solid 1px var(--c-background-secondary);
+    border-radius: var(--border-radius);
+    margin: 0 1rem;
+}
+
+.flash--error {
+    background: #2c0b0e;
+    color: var(--c-danger);
+}

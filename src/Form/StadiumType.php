@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Stadium;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,9 +13,15 @@ class StadiumType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('country')
-            ->add('city')
+            ->add('name', TextType::class, [
+                'empty_data' => '',
+            ])
+            ->add('country', TextType::class, [
+                'empty_data' => '',
+            ])
+            ->add('city', TextType::class, [
+                'empty_data' => '',
+            ])
         ;
     }
 
